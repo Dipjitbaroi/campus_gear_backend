@@ -1,0 +1,16 @@
+model Payment {
+    id                    String      @id @default(uuid())
+    rentalOrder           RentalOrder @relation(fields: [rentalOrderId], references: [id])
+    rentalOrderId         String      @unique @map("rental_order_id")
+    amount                Decimal     @db.Decimal(10, 2)
+    stripePaymentIntentId String?     @map("stripe_payment_intent_id") @db.VarChar(255)
+
+    stripeSessionId String? @map("stripe_session_id") @db.VarChar(255)
+
+    status PaymentStatus @default(PENDING)
+
+    createdAt DateTime @default(now()) @db.Timestamptz()
+    updatedAt DateTime @updatedAt @db.Timestamptz()
+
+    @@map("payments")
+}

@@ -1,0 +1,17 @@
+model Review {
+    id            String      @id @default(uuid())
+    rentalOrder   RentalOrder @relation(fields: [rentalOrderId], references: [id])
+    rentalOrderId String      @unique @map("rental_order_id")
+    gearItem      GearItem    @relation(fields: [gearItemId], references: [id])
+    gearItemId    String      @map("gear_item_id")
+    customer      User        @relation(fields: [customerId], references: [id])
+    customerId    String      @map("customer_id")
+
+    rating  Decimal @db.Decimal(2, 1)
+    comment String? @db.Text
+
+    createdAt DateTime @default(now()) @db.Timestamptz()
+    updatedAt DateTime @updatedAt @db.Timestamptz()
+
+    @@map("reviews")
+}

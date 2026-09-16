@@ -1,0 +1,26 @@
+enum Role {
+    ADMIN
+    PROVIDER
+    CUSTOMER
+}
+
+enum UserStatus {
+    ACTIVE
+    INACTIVE
+    SUSPENDED
+}
+
+enum RentalOrderStatus {
+    PLACED
+    CONFIRMED
+    PAID
+    PICKED_UP
+    RETURNED
+    CANCELLED
+}
+
+enum PaymentStatus {
+    PENDING
+    COMPLETED
+    FAILED
+}
